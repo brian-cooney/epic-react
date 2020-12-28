@@ -9,6 +9,14 @@ function UsernameForm({onSubmitUsername}) {
   // `event.preventDefault()` to prevent the default behavior of form submit
   // events (which refreshes the page).
   //
+
+  function handleSubmit(event) {
+    console.log(event.target.elements[0].value)
+    const value = event.target.elements.userNameInput.value
+    // event.preventDefault()
+    onSubmitUsername(value)
+  }
+
   // 🐨 get the value from the username input (using whichever method
   // you prefer from the options mentioned in the instructions)
   // 💰 For example: event.target.elements[0].value
@@ -19,10 +27,10 @@ function UsernameForm({onSubmitUsername}) {
   // 🐨 make sure to associate the label to the input by specifying an `id` on
   // the input and a matching value as an `htmlFor` prop on the label.
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
-        <label>Username:</label>
-        <input type="text" />
+        <label htmlFor="userNameInput">User name:</label>
+        <input id="userNameInput" type="text" />
       </div>
       <button type="submit">Submit</button>
     </form>
